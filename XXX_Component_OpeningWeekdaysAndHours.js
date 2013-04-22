@@ -13,7 +13,7 @@
 	
 	*/
 	
-	var XXX_Component_AvailabilityWeekdaysAndHoursSettings = function (container, weekStart, jsonInput, previousSettings)
+	var XXX_Component_OpeningWeekdaysAndHoursSettings = function (container, weekStart, jsonInput, previousSettings)
 	{
 		this.ID = XXX.createID();
 		
@@ -119,7 +119,7 @@
 		this.updateJSONInput();
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.render = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.render = function ()
 	{		
 		var output = '';
 		
@@ -193,7 +193,7 @@
 		{
 			var option = this.options[i];
 			
-			var XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance = this;
+			var XXX_Component_OpeningWeekdaysAndHoursSettings_instance = this;
 						
 			this.elements[option.variablePrefix + 'IsOpen'] = XXX_DOM.get(option.variablePrefix + 'IsOpen');
 				this.elements[option.variablePrefix + 'IsOpen'].XXX_optionIndex = i;
@@ -209,7 +209,7 @@
 			
 			var dayOfTheWeekOpeningClock = function ()
 			{
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.changeHandler();
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.changeHandler();
 			};
 			
 			this.elements[option.variablePrefix + 'OpeningClock'].eventDispatcher.addEventListener('change', dayOfTheWeekOpeningClock);
@@ -219,15 +219,15 @@
 						
 			var dayOfTheWeekClosingClock = function ()
 			{
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.changeHandler();
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.changeHandler();
 			};
 			
 			this.elements[option.variablePrefix + 'ClosingClock'].eventDispatcher.addEventListener('change', dayOfTheWeekClosingClock);
 			
 			var dayOfTheWeekIs24HoursOpenCallback = function ()
 			{
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.dayOfTheWeekIs24HoursOpenChanged(this.XXX_optionIndex);
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.changeHandler();
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.dayOfTheWeekIs24HoursOpenChanged(this.XXX_optionIndex);
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.changeHandler();
 			};
 			
 			XXX_DOM_NativeEventDispatcher.addEventListener(this.elements[option.variablePrefix + 'Is24HoursOpen'], 'change', dayOfTheWeekIs24HoursOpenCallback);
@@ -235,8 +235,8 @@
 			
 			var dayOfTheWeekIsOpenCallback = function ()
 			{
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.dayOfTheWeekIsOpenChanged(this.XXX_optionIndex);
-				XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.changeHandler();
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.dayOfTheWeekIsOpenChanged(this.XXX_optionIndex);
+				XXX_Component_OpeningWeekdaysAndHoursSettings_instance.changeHandler();
 			};
 			
 			XXX_DOM_NativeEventDispatcher.addEventListener(this.elements[option.variablePrefix + 'IsOpen'], 'change', dayOfTheWeekIsOpenCallback);
@@ -249,8 +249,8 @@
 		
 		var is247OpenCallback = function ()
 		{
-			XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.is247OpenChanged();
-			XXX_Component_AvailabilityWeekdaysAndHoursSettings_instance.changeHandler();
+			XXX_Component_OpeningWeekdaysAndHoursSettings_instance.is247OpenChanged();
+			XXX_Component_OpeningWeekdaysAndHoursSettings_instance.changeHandler();
 		};
 		
 		XXX_DOM_NativeEventDispatcher.addEventListener(this.elements[this.ID + 'Is247Open'], 'change', is247OpenCallback);
@@ -260,7 +260,7 @@
 		this.updateWeekdaysVisibility();
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.dayOfTheWeekIs24HoursOpenChanged = function (optionIndex)
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.dayOfTheWeekIs24HoursOpenChanged = function (optionIndex)
 	{
 		var option = this.options[optionIndex];
 					
@@ -271,7 +271,7 @@
 		this.updateDayOfTheWeekVisibility(optionIndex);
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.dayOfTheWeekIsOpenChanged = function (optionIndex)
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.dayOfTheWeekIsOpenChanged = function (optionIndex)
 	{
 		var option = this.options[optionIndex];
 		
@@ -282,7 +282,7 @@
 		this.updateDayOfTheWeekVisibility(optionIndex);		
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.updateDayOfTheWeekVisibility = function (optionIndex)
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.updateDayOfTheWeekVisibility = function (optionIndex)
 	{
 		var option = this.options[optionIndex];
 		
@@ -291,7 +291,7 @@
 		XXX_CSS.setStyle(this.elements[option.variablePrefix + 'ClosingVisibilityWrapper'], 'visibility', (option.isOpen && !option.is24HoursOpen) ? 'visible' : 'hidden');
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.is247OpenChanged = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.is247OpenChanged = function ()
 	{
 		var selected = XXX_DOM_NativeHelpers.nativeFreeOptionSwitchInput.isSelected(this.elements[this.ID + 'Is247Open']);
 		
@@ -300,12 +300,12 @@
 		this.updateWeekdaysVisibility();
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.updateWeekdaysVisibility = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.updateWeekdaysVisibility = function ()
 	{
 		XXX_CSS.setStyle(this.elements[this.ID + 'Weekdays'], 'display', this.is247Open ? 'none' : 'block');
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.changeHandler = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.changeHandler = function ()
 	{
 		this.propagateFromSettings();
 		
@@ -314,7 +314,7 @@
 		this.eventDispatcher.dispatchEventToListeners('change');
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.updateJSONInput = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.updateJSONInput = function ()
 	{
 		if (this.elements.jsonInput)
 		{			
@@ -344,7 +344,7 @@
 		}
 	};
 	
-	XXX_Component_AvailabilityWeekdaysAndHoursSettings.prototype.propagateFromSettings = function ()
+	XXX_Component_OpeningWeekdaysAndHoursSettings.prototype.propagateFromSettings = function ()
 	{
 		for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(this.options); i < iEnd; ++i)
 		{
