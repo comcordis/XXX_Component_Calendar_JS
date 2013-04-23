@@ -168,17 +168,17 @@
 					
 					output += '<td>';
 						output += '<div id="' + option.variablePrefix + 'OpeningVisibilityWrapper"' + ((option.isOpen && !option.is24HoursOpen) ? '' : ' style="visibility: hidden;"') + '>';
-							output += '<span class="input">';
+							output += '<label class="input" for="' + option.variablePrefix + 'Opening">';
 								output += '<input type="text" value="' + option.openingHour + ':' + option.openingMinute + '" id="' + option.variablePrefix + 'Opening">';
-							output += '</span>';
+							output += '</label>';
 						output += '</div>';
 					output += '</td>';
 					
 					output += '<td>';
 						output += '<div id="' + option.variablePrefix + 'ClosingVisibilityWrapper"' + ((option.isOpen && !option.is24HoursOpen) ? '' : ' style="visibility: hidden;"') + '>';
-							output += '<span class="input">';
+							output += '<label class="input" for="' + option.variablePrefix + 'Closing">';
 								output += '<input type="text" value="' + option.closingHour + ':' + option.closingMinute + '" id="' + option.variablePrefix + 'Closing">';
-							output += '</span>';
+							output += '</label>';
 						output += '</div>';
 					output += '</td>';
 				output += '</tr>';
