@@ -25,7 +25,21 @@
 		
 		this.elements.jsonInput = XXX_DOM.get(jsonInput);
 		
-		var dayOfTheWeekNames = XXX_I18n_Translation.get('dateTime', 'daysOfTheWeek', 'abbreviations');
+		
+		
+		
+		//var dayOfTheWeekNames = XXX_I18n_Translation.get('dateTime', 'daysOfTheWeek', 'abbreviations');
+		
+		
+		var dayOfTheWeekNames = [
+			XXX_I18n_Translation.get('custom', 'calendar', 'monday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'tuesday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'wednesday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'thursday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'friday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'saturday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'sunday')
+		];
 		
 		this.is247Open = false;
 		
@@ -127,20 +141,20 @@
 		//output += '<span class="input">';
 			output += '<input type="checkbox"' + (this.is247Open ? ' checked="checked"' : '') + ' id="' + this.ID + 'Is247Open">';
 		//output += '</span> Open 24 / 7';
-		output += ' <b>Every day of the week, 24 hours a day (24/7)</b>';
+		output += ' <b>' + XXX_I18n_Translation.get('custom', 'provider', 'availability', 'everyDayOfTheWeek24HoursADay') + '</b>';
 		output += '</label>';
 		
 		output += '<table id="' + this.ID + 'Weekdays" class="dataTable" style="margin-top: 10px;">';
 			
 			output += '<thead>';
 				output += '<tr>';
-					output += '<th rowspan="2" colspan="2">Open?</th>';
-					output += '<th rowspan="2">24h?</th>';
-					output += '<th colspan="2">Or specific times</th>';
+					output += '<th rowspan="2" colspan="2">' + XXX_I18n_Translation.get('custom', 'provider', 'availability', 'open') + '</th>';
+					output += '<th rowspan="2">' + XXX_I18n_Translation.get('custom', 'provider', 'availability', '24h') + '</th>';
+					output += '<th colspan="2">' + XXX_I18n_Translation.get('custom', 'provider', 'availability', 'orSpecificTimes') + '</th>';
 				output += '</tr>';
 				output += '<tr>';
-					output += '<th>Opening</th>';
-					output += '<th>Closing</th>';
+					output += '<th>' + XXX_I18n_Translation.get('custom', 'provider', 'availability', 'opening') + '</th>';
+					output += '<th>' + XXX_I18n_Translation.get('custom', 'provider', 'availability', 'closing') + '</th>';
 				output += '</tr>';
 			output += '</thead>';
 			

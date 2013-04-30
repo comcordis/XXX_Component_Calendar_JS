@@ -76,8 +76,36 @@ var XXX_Component_MultipleDatesPickerCalendar = function (container, weekStart, 
 		
 		this.IDToDateConversion = {};
 		
-		var monthAbbreviations = XXX_I18n_Translation.get('dateTime', 'months', 'abbreviations');
-		var dayAbbreviations = XXX_I18n_Translation.get('dateTime', 'daysOfTheWeek', 'abbreviations');
+		//var monthAbbreviations = XXX_I18n_Translation.get('dateTime', 'months', 'abbreviations');
+		//var dayAbbreviations = XXX_I18n_Translation.get('dateTime', 'daysOfTheWeek', 'abbreviations');
+		
+		
+		var monthAbbreviations = [
+			XXX_I18n_Translation.get('custom', 'calendar', 'january'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'february'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'march'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'april'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'may'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'june'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'july'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'august'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'september'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'october'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'november'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'december')
+		];
+		
+		var dayAbbreviations = [
+			XXX_I18n_Translation.get('custom', 'calendar', 'monday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'tuesday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'wednesday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'thursday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'friday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'saturday'),
+			XXX_I18n_Translation.get('custom', 'calendar', 'sunday')
+		];
+		
+		var weekAbbreviation = XXX_I18n_Translation.get('custom', 'calendar', 'week');
 		
 		var monthArray = XXX_TimestampHelpers.getMonthArray(this.viewYear, this.viewMonth, this.weekStart);
 	
@@ -114,7 +142,7 @@ var XXX_Component_MultipleDatesPickerCalendar = function (container, weekStart, 
 				{
 					if (j == 0)
 					{
-						output += '<th>' + temp + '</th>';
+						output += '<th>' + weekAbbreviation + '</th>';
 					}
 					else
 					{
