@@ -38,7 +38,7 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat)
 		this.elements.calendarContainer = XXX_DOM.createElementNode('div');
 			XXX_CSS.setClass(this.elements.calendarContainer, 'dialog');
 		
-		XXX_DOM.appendChildNode(XXX_DOM.getElementParent(this.elements.input), this.elements.calendarContainer);
+		XXX_DOM.appendChildNode(XXX_DOM.getBody(), this.elements.calendarContainer);
 		
 		
 		this.propagateDateFromInput();

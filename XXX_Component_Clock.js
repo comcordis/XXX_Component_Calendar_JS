@@ -22,9 +22,9 @@ var XXX_Component_Clock = function (input, clockType)
 	
 	this.elements.clockContainer = XXX_DOM.createElementNode('div');
 		XXX_CSS.setClass(this.elements.clockContainer, 'dialog');
-		XXX_CSS.setStyle(this.elements.clockContainer, 'width', '170px');
+		//XXX_CSS.setStyle(this.elements.clockContainer, 'width', '170px');
 	
-	XXX_DOM.appendChildNode(XXX_DOM.getElementParent(this.elements.input), this.elements.clockContainer);
+	XXX_DOM.appendChildNode(XXX_DOM.getBody(), this.elements.clockContainer);
 	
 	this.propagateTimeFromInput();
 	this.propagateTimeFromClock();
