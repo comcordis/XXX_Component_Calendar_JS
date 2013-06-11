@@ -370,6 +370,8 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat)
 			this.reposition();
 			
 			this.propagateDateFromCalendar();
+			
+			this.hide();
 		}
 	};
 	
