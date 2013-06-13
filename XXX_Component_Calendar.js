@@ -1,7 +1,10 @@
-var XXX_Component_Calendar = function (input, weekStart, dateFormat)
+var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalOffsetFromNowIfEmpty)
 	{
 		this.ID = XXX.createID();
 		
+		
+		this.additionalOffsetFromNowIfEmpty = XXX_Default.toInteger(additionalOffsetFromNowIfEmpty, 3600);
+	
 			var now = XXX_TimestampHelpers.getCurrentTimestamp() + XXX_JS.timezoneOffset;
 			
 		this.selectedDate = new XXX_Timestamp(now);
@@ -108,6 +111,30 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat)
 			XXX_Component_Calendar_instance.rerender();
 		});
 	};
+	
+	XXX_Component_Calendar.prototype.setSelectedDateByTimestamp = function (timestamp)
+	{
+		if (XXX_Type.isInteger(timestamp))
+		{
+			var tempTimestamp = new XXX_Timestamp();
+			tempTimestamp.set(timestamp);
+			timestamp = tempTimestamp;
+			
+			var tempTimestampParts = tempTimestamp.parse();
+			
+			this.viewYear = tempTimestampParts.year;
+			this.viewMonth = tempTimestampParts.month;
+		}
+		
+		this.selectedDate = timestamp;
+		
+		this.rerender();
+		this.reposition();
+		
+		this.propagateDateFromCalendar();
+		
+		this.hide();
+	};
 		
 	XXX_Component_Calendar.prototype.propagateDateFromCalendar = function ()
 	{
@@ -121,14 +148,35 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat)
 	XXX_Component_Calendar.prototype.propagateDateFromInput = function ()
 	{
 		var value = XXX_DOM_NativeHelpers.nativeCharacterLineInput.getValue(this.elements.input);
+			
+		if (value == '')
+		{
+			var timezoneInformation = XXX_TimestampHelpers.getTimeZoneInformation();
+			var offset = 0;
+			if (timezoneInformation)
+			{
+				offset = timezoneInformation.secondOffset.current;
+			}
+			
+			var tempDate = new XXX_Timestamp();
+			tempDate.set((tempDate.get() + offset) + this.additionalOffsetFromNowIfEmpty);
+			
+			var tempDateParts = tempDate.parse();
+			
+			this.viewYear = tempDateParts.year;
+			this.viewMonth = tempDateParts.month;
+		}
+		else
+		{
+			var parsedDateValue = XXX_TimestampHelpers.parseDateValue(value, this.dateFormat);
+			
+			var tempDate = new XXX_Timestamp();
+			tempDate.compose({year: parsedDateValue.year, month: parsedDateValue.month, date: parsedDateValue.date});
+			
+			this.viewYear = parsedDateValue.year;
+			this.viewMonth = parsedDateValue.month;
+		}
 		
-		var parsedDateValue = XXX_TimestampHelpers.parseDateValue(value, this.dateFormat);
-		
-		var tempDate = new XXX_Timestamp();
-		tempDate.compose({year: parsedDateValue.year, month: parsedDateValue.month, date: parsedDateValue.date});
-		
-		this.viewYear = parsedDateValue.year;
-		this.viewMonth = parsedDateValue.month;
 		this.selectedDate = tempDate;
 				
 		this.eventDispatcher.dispatchEventToListeners('change', this);

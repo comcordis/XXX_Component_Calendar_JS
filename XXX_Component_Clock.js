@@ -1,7 +1,9 @@
-var XXX_Component_Clock = function (input, clockType)
+var XXX_Component_Clock = function (input, clockType, additionalOffsetFromNowIfEmpty)
 {
 	this.ID = XXX.createID();
 	this.clockType = XXX_Default.toOption(clockType, ['12', '24'], '24');
+	
+	this.additionalOffsetFromNowIfEmpty = XXX_Default.toInteger(additionalOffsetFromNowIfEmpty, 3600);
 		
 		var now = XXX_TimestampHelpers.getCurrentTimestamp() + XXX_JS.timezoneOffset;
 			
@@ -99,6 +101,26 @@ XXX_Component_Clock.prototype.addInputEventHandlers = function ()
 	});
 };
 
+	
+XXX_Component_Clock.prototype.setSelectedTimeByTimestamp = function (timestamp)
+{
+	if (XXX_Type.isInteger(timestamp))
+	{
+		var tempTimestamp = new XXX_Timestamp();
+		tempTimestamp.set(timestamp);
+		timestamp = tempTimestamp;
+	}
+	
+	this.selectedTime = timestamp;
+	
+	this.rerender();
+	this.reposition();
+	
+	this.propagateTimeFromClock();
+	
+	this.hide();
+};
+
 XXX_Component_Clock.prototype.propagateTimeFromClock = function ()
 {
 	var composedTimeValue = XXX_TimestampHelpers.composeTimeValue(this.selectedTime, this.clockType);
@@ -112,10 +134,25 @@ XXX_Component_Clock.prototype.propagateTimeFromInput = function ()
 {
 	var value = XXX_DOM_NativeHelpers.nativeCharacterLineInput.getValue(this.elements.input);
 	
-	var parsedTimeValue = XXX_TimestampHelpers.parseTimeValue(value, this.clockType);
+	if (value == '')
+	{
+		var timezoneInformation = XXX_TimestampHelpers.getTimeZoneInformation();
+		var offset = 0;
+		if (timezoneInformation)
+		{
+			offset = timezoneInformation.secondOffset.current;
+		}
+		
+		var tempTime = new XXX_Timestamp();
+		tempTime.set((tempTime.get() + offset) + this.additionalOffsetFromNowIfEmpty);
+	}
+	else
+	{
+		var parsedTimeValue = XXX_TimestampHelpers.parseTimeValue(value, this.clockType);
 	
-	var tempTime = new XXX_Timestamp();
-	tempTime.compose({hour: parsedTimeValue.hour, minute: parsedTimeValue.minute});
+		var tempTime = new XXX_Timestamp();
+		tempTime.compose({hour: parsedTimeValue.hour, minute: parsedTimeValue.minute});		
+	}
 	
 	this.selectedTime = tempTime;
 			
