@@ -215,7 +215,7 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 			
 			calendarHTML += '<span class="viewMonthAndYear">';
 			
-			var monthAbbreviations = XXX_I18n_Translation.get('dateTime', 'months', 'abbreviations');
+			var monthAbbreviations = XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations');
 			
 			calendarHTML += monthAbbreviations[this.viewMonth - 1];
 			
@@ -229,9 +229,7 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 			calendarHTML += '<table class="calendarTable">';
 			calendarHTML += '<tr>';
 			
-			var dayAbbreviations = XXX_I18n_Translation.get('dateTime', 'daysOfTheWeek', 'abbreviations');
-			
-			
+			var dayAbbreviations = XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations');
 			
 			for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(monthArray); i < iEnd; ++i)
 			{
