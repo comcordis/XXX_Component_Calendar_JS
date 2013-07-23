@@ -215,7 +215,21 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 			
 			calendarHTML += '<span class="viewMonthAndYear">';
 			
-			var monthAbbreviations = XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations');
+			var monthAbbreviations =
+			[
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'january'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'february'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'march'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'april'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'may'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'june'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'july'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'august'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'september'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'october'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'november'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'months', 'abbreviations', 'december')
+			];
 			
 			calendarHTML += monthAbbreviations[this.viewMonth - 1];
 			
@@ -229,7 +243,16 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 			calendarHTML += '<table class="calendarTable">';
 			calendarHTML += '<tr>';
 			
-			var dayAbbreviations = XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations');
+			var dayAbbreviations =
+			[
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'monday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'tuesday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'wednesday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'thursday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'friday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'saturday'),
+				XXX_I18n_Translation.get('custom', 'calendar', 'daysOfTheWeek', 'abbreviations', 'sunday')
+			];
 			
 			for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(monthArray); i < iEnd; ++i)
 			{
