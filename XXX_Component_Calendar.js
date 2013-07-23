@@ -325,9 +325,9 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 			calendarHTML += '</table>';
 			
 			calendarHTML += '<div class="calendarTableFooter">';
-				calendarHTML += '<a href="#" id="' + this.ID + '_today" class="today">' + XXX_I18n_Translation.get('dateTime', 'today') + '</a> ';
+				calendarHTML += '<a href="#" id="' + this.ID + '_today" class="today">' + XXX_I18n_Translation.get('custom', 'calendar', 'today') + '</a> ';
 				calendarHTML += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
-				calendarHTML += '<a href="#" id="' + this.ID + '_tomorrow" class="tomorrow">' + XXX_I18n_Translation.get('dateTime', 'tomorrow') + '</a>';
+				calendarHTML += '<a href="#" id="' + this.ID + '_tomorrow" class="tomorrow">' + XXX_I18n_Translation.get('custom', 'calendar', 'tomorrow') + '</a>';
 			calendarHTML += '</div>';
 			
 			XXX_DOM.setInner(this.elements.calendarContainer, calendarHTML);
