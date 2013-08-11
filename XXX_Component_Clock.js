@@ -217,6 +217,8 @@ XXX_Component_Clock.prototype.propagateTimeFromInput = function ()
 		
 		this.elements.hour_nativeExclusiveOptionListBoxInput = XXX_DOM.createElementNode('select');
 		
+		XXX_DOM_NativeHelpers.nativeFreeOptionListBoxInput.setRows(this.elements.hour_nativeExclusiveOptionListBoxInput, 6);
+		
 		for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(hourOptions); i < iEnd; ++i)
 		{
 			XXX_DOM_NativeHelpers.nativeExclusiveOptionListBoxInput.addOption(this.elements.hour_nativeExclusiveOptionListBoxInput, hourOptions[i], 'right');
@@ -225,6 +227,9 @@ XXX_Component_Clock.prototype.propagateTimeFromInput = function ()
 		
 		this.elements.minute_nativeExclusiveOptionListBoxInput = XXX_DOM.createElementNode('select');
 		
+		
+		XXX_DOM_NativeHelpers.nativeFreeOptionListBoxInput.setRows(this.elements.minute_nativeExclusiveOptionListBoxInput, 6);
+		
 		for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(minuteOptions); i < iEnd; ++i)
 		{
 			XXX_DOM_NativeHelpers.nativeExclusiveOptionListBoxInput.addOption(this.elements.minute_nativeExclusiveOptionListBoxInput, minuteOptions[i], 'right');
@@ -232,6 +237,8 @@ XXX_Component_Clock.prototype.propagateTimeFromInput = function ()
 		
 		
 		this.elements.meridiem_nativeExclusiveOptionListBoxInput = XXX_DOM.createElementNode('select');
+		
+		XXX_DOM_NativeHelpers.nativeFreeOptionListBoxInput.setRows(this.elements.meridiem_nativeExclusiveOptionListBoxInput, 2);
 		
 		for (var i = 0, iEnd = XXX_Array.getFirstLevelItemTotal(meridiemOptions); i < iEnd; ++i)
 		{
