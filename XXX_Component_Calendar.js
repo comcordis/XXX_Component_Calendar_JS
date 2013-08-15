@@ -1,10 +1,14 @@
-var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalOffsetFromNowIfEmpty)
+var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalOffsetFromNowIfEmpty, offsetToParent)
 	{
 		this.ID = XXX.createID();
 		
 		
 		this.additionalOffsetFromNowIfEmpty = XXX_Default.toInteger(additionalOffsetFromNowIfEmpty, 3600);
 	
+	
+		this.offsetToParent = offsetToParent;
+		
+		
 			var now = XXX_TimestampHelpers.getCurrentTimestamp() + XXX_JS.timezoneOffset;
 			
 		this.selectedDate = new XXX_Timestamp(now);
@@ -36,7 +40,7 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 		this.eventDispatcher = new XXX_EventDispatcher();
 		
 		this.elements.input = XXX_DOM.get(input);
-			XXX_CSS.setStyle(this.elements.input, 'text-align', 'right');
+			//XXX_CSS.setStyle(this.elements.input, 'text-align', 'right');
 		
 		this.elements.calendarContainer = XXX_DOM.createElementNode('div');
 			XXX_CSS.setClass(this.elements.calendarContainer, 'dialog');
@@ -514,5 +518,12 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 	
 	XXX_Component_Calendar.prototype.reposition = function ()
 	{
-		XXX_CSS_Position.nextToOffsetElement(this.elements.input, this.elements.calendarContainer, ['bottomRight', 'topRight'], 5);
+		var offsetElement = this.elements.input;
+		
+		if (this.offsetToParent)
+		{
+			offsetElement = XXX_DOM.getParent(offsetElement);
+		}
+		
+		XXX_CSS_Position.nextToOffsetElement(offsetElement, this.elements.calendarContainer, ['bottomRight', 'topRight'], 5);
 	};
