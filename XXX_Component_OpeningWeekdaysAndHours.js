@@ -218,7 +218,7 @@
 				
 			this.elements[option.variablePrefix + 'Is24HoursOpenVisibilityWrapper'] = XXX_DOM.get(option.variablePrefix + 'Is24HoursOpenVisibilityWrapper');
 			
-			this.elements[option.variablePrefix + 'OpeningClock'] = new XXX_Component_Clock(option.variablePrefix + 'Opening', YAT_I18n_Preferences.current.clockType);			
+			this.elements[option.variablePrefix + 'OpeningClock'] = new XXX_Component_Clock(option.variablePrefix + 'Opening', YAT_Helper_I18nPreferences.current.clockType);			
 				this.elements[option.variablePrefix + 'OpeningVisibilityWrapper'] = XXX_DOM.get(option.variablePrefix + 'OpeningVisibilityWrapper');
 			
 			var dayOfTheWeekOpeningClock = function ()
@@ -228,7 +228,7 @@
 			
 			this.elements[option.variablePrefix + 'OpeningClock'].eventDispatcher.addEventListener('change', dayOfTheWeekOpeningClock);
 			
-			this.elements[option.variablePrefix + 'ClosingClock'] = new XXX_Component_Clock(option.variablePrefix + 'Closing', YAT_I18n_Preferences.current.clockType);
+			this.elements[option.variablePrefix + 'ClosingClock'] = new XXX_Component_Clock(option.variablePrefix + 'Closing', YAT_Helper_I18nPreferences.current.clockType);
 				this.elements[option.variablePrefix + 'ClosingVisibilityWrapper'] = XXX_DOM.get(option.variablePrefix + 'ClosingVisibilityWrapper');
 						
 			var dayOfTheWeekClosingClock = function ()
