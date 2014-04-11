@@ -579,7 +579,7 @@ XXX_Component_Clock.prototype.propagateTimeFromInput = function ()
 						XXX_Component_Clock_instance.propagateDownFromClock();
 					});
 					
-					XXX_DOM_NativeEventDispatcher.addEventListener(this.meridiemNativeExclusiveOptionSwitchInputs[i].id + 'label', 'click', function (nativeEvent)
+					XXX_DOM_NativeEventDispatcher.addEventListener(this.meridiemNativeExclusiveOptionSwitchInputs[i].id + '_label', 'click', function (nativeEvent)
 					{
 						nativeEvent.stopPropagation();
 						
