@@ -152,9 +152,11 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 	XXX_Component_Calendar.prototype.propagateDateFromInput = function ()
 	{
 		var value = XXX_DOM_NativeHelpers.nativeCharacterLineInput.getValue(this.elements.input);
-			
+		
 		if (value == '')
 		{
+			XXX_JS.errorNotification(0, 'Value is empty');
+			
 			var timezoneInformation = XXX_TimestampHelpers.getTimeZoneInformation();
 			var offset = 0;
 			if (timezoneInformation)
@@ -172,11 +174,18 @@ var XXX_Component_Calendar = function (input, weekStart, dateFormat, additionalO
 		}
 		else
 		{
+			XXX_JS.errorNotification(0, 'Value is filled');
+			
 			var parsedDateValue = XXX_TimestampHelpers.parseDateValue(value, this.dateFormat);
 			
+			XXX_JS.errorNotification(0, 'Value is ' + value);
+			XXX_JS.errorNotification(0, 'Date format is ' + this.dateFormat);
+						
 			var tempDate = new XXX_Timestamp();
 			tempDate.compose({year: parsedDateValue.year, month: parsedDateValue.month, date: parsedDateValue.date});
 			
+			XXX_JS.errorNotification(0, 'Parsed date value is ' + parsedDateValue.date + '-' + parsedDateValue.month + '-' + parsedDateValue.year);
+						
 			this.viewYear = parsedDateValue.year;
 			this.viewMonth = parsedDateValue.month;
 		}
