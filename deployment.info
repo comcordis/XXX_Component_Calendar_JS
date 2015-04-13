@@ -1,0 +1,6 @@
+project:XXX_Component_Calendar_JS
+deployEnvironment:development
+checkout:master
+commitHash:0d9db954a37e5d56010fe77022d04ed6394b2f07
+timestamp:2015-04-13T09:43:44Z
+deployer:operations
